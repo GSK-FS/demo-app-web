@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles-result.css">
+    <title>Processed Result</title>
+</head>
+<body>
+    <p>{{ error_message }}</p>
+    <h1>Processed Result</h1>
+    <p>Information about the processed result.</p>
+    <br>
+
+    <!-- Display the processed images -->
+<div class="image-section">
+    <!-- First Design Image Section -->
+    <div class="image-result-2">
+        <div><label for="fileDesign">Design Team Image:</label></div>
+        <div class="image-preview" id="previewDesign">
+            <img src="{{ url_for('processed_image', filename='processed_image_1.jpg') }}" alt="Processed Gray Image">
+        </div>
+    </div>
+
+    <!-- Second Developer Image Section -->
+    <div class="image-result-2">
+        <div><label for="fileDeveloper">Developer Team Image:</label></div>
+        <div class="image-preview" id="previewDeveloper">
+            <img src="{{ url_for('processed_image', filename='processed_image_2.jpg') }}" alt="Processed Gray Image">
+        </div>
+    </div>
+</div>
+
+<!-- Display the processed image 3 -->
+<div class="image-section">
+    
+</div>
+
+<!-- Display the processed image 4 -->
+<div class="image-section">
+    
+</div>
+
+</body>
+
+<br>
+<footer>
+    © Thank You
+</footer>
+</html>

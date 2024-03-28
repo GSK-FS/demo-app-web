@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles-home.css') }}">
+    <title>Images Comparison</title>
+</head>
+<body>
+    <h1>Images Comparison</h1>
+    <p>Informative text about the functionality or use case of the web app.</p>
+    <br>
+
+
+    <div class="drop-area" id="drop-area" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+        <p class="drop-text">select an image.</p>
+        <div class="image-section">
+            <!-- JSON Section -->
+            <div class="image-upload">
+                <form id="jsonForm" enctype="multipart/form-data">
+                    <div><label for="jsonFile">Upload JSON File:</label></div>
+                    <div class="upload-btn-wrapper">
+                        <button type="button" class="btn" onclick="document.getElementById('jsonFile').click()">Upload</button>
+                        <input type="file" name="jsonFile" id="jsonFile" accept=".json" required="">
+                    </div>
+                </form>
+                <div class="json-preview" id="jsonPreview"></div>
+            </div>
+
+            <!-- First Image Section -->
+            <div class="image-upload">
+                <form id="form1" action="{{ url_for('upload_image', image_number=1) }}" method="post" enctype="multipart/form-data">
+                    <div><label for="file1">Design Team Image:</label></div>
+                    <div class="upload-btn-wrapper">
+                        <button type="button" class="btn" onclick="document.getElementById('file1').click()">Load</button>
+                        <input type="file" name="file" id="file1" accept="image/*" required="" onchange="previewImage('file1', 'preview1', 'form1')">
+                    </div>
+                </form>
+                <div class="image-preview" id="preview1">
+                    <img alt="Preview Image 1">
+                </div>
+            </div>
+            
+            <!-- Second Image Section -->
+            <div class="image-upload">
+                <form id="form2" action="{{ url_for('upload_image', image_number=2) }}" method="post" enctype="multipart/form-data">
+                    <div><label for="file2">Developer Team Image:</label></div>
+                    <div class="upload-btn-wrapper">
+                        <button type="button" class="btn" onclick="document.getElementById('file2').click()" disabled>Load</button>
+                        <input type="file" name="file" id="file2" accept="image/*" required="" onchange="previewImage('file2', 'preview2', 'form2')">
+                    </div>
+                </form>
+                <div class="image-preview" id="preview2">
+                    <img alt="Preview Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Process Result Button -->
+    <form action="{{ url_for('process_result') }}" method="post" target="_blank">
+        <div class="submit-btn-container">
+            <button type="submit" id="submitBtn">Process Result</button>
+        </div>
+    </form>
+
+        <!-- Drag and Drop Area -->
+        <script src="../static/script-home.js"></script>
+</body>
+
+<br>
+<footer>
+    © Thank You
+</footer>
+</html>
